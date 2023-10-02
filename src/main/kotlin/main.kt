@@ -1,12 +1,22 @@
+import kotlin.random.Random
 
 fun main() {
 
-    val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper" )
-    println(spices.sortedBy { it.length })
-    println(spices.filter { it[0] == 'c' && it[it.length-1] == 'e' })
-    println(spices.take(3).filter { it[0] == 'c' })
+   var n: Int = 0
+   var rollDice: (Int) -> Int = {
+      println("Enter dice sides: ")
+       n = readLine()?.toIntOrNull() ?: 0
+      if (it > 0) {
+         Random.nextInt(1, it + 1)
+      } else {
+         0
+      }
+   }
+
+   gamePlay(n, rollDice)
 }
 
-
-
-
+fun gamePlay(n: Int, operation: (Int) -> Int) {
+   val op = operation(n).toString()
+   println(op)
+}
