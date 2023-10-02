@@ -1,31 +1,27 @@
 
 fun main() {
 
+    println(whatShouldIDoToday("happy", "sunny"))
+    println(whatShouldIDoToday("excited", temperature = 30))
 
-    canAddFish(10.0, listOf(3,3,3))
-    canAddFish(8.0, listOf(2,2,2), hasDecoration = false)
-    canAddFish(9.0, listOf(1,1,3), currentFishSize = 3)
-    canAddFish(10.0, listOf(), currentFishSize = 7)
 
 
 }
-fun canAddFish(size:Double = 2.0,listFish:List<Int>,hasDecoration:Boolean = true, currentFishSize:Int = 0): Boolean
+
+fun whatShouldIDoToday(mood:String,
+                       weather:String = "sunny",
+                       temperature:Int = 24):String
 {
-    var sizeWithDecoration = size
-    var listFishMutable:MutableList<Int> = listFish.toMutableList()
-    if (hasDecoration == true)
+    return when
     {
-         sizeWithDecoration = size - size / 5
+        mood == "happy" && weather == "sunny" -> "go for a walk"
+        mood == "sad" && weather == "rainy" && temperature == 0 -> "stay in bed"
+        mood == "tired" && weather == "cloudy" -> "Have a cozy day at home."
+        mood == "excited" && temperature > 25 -> "Go to the beach!"
+        temperature > 35 -> "go swimming"
+        else -> "Stay home and read."
+
     }
-    listFishMutable.add(currentFishSize)
-    if(sizeWithDecoration < listFishMutable.sum())
-    {
-        println("false")
-        return false
-    }
-    else
-        println("true")
-        return true
 }
 
 
