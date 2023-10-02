@@ -1,27 +1,12 @@
 
 fun main() {
 
-    println(whatShouldIDoToday("happy", "sunny"))
-    println(whatShouldIDoToday("excited", temperature = 30))
-
-
-
+    val spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper" )
+    println(spices.sortedBy { it.length })
+    println(spices.filter { it[0] == 'c' && it[it.length-1] == 'e' })
+    println(spices.take(3).filter { it[0] == 'c' })
 }
 
-fun whatShouldIDoToday(mood:String,
-                       weather:String = "sunny",
-                       temperature:Int = 24):String
-{
-    return when
-    {
-        mood == "happy" && weather == "sunny" -> "go for a walk"
-        mood == "sad" && weather == "rainy" && temperature == 0 -> "stay in bed"
-        mood == "tired" && weather == "cloudy" -> "Have a cozy day at home."
-        mood == "excited" && temperature > 25 -> "Go to the beach!"
-        temperature > 35 -> "go swimming"
-        else -> "Stay home and read."
 
-    }
-}
 
 
