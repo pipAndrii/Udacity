@@ -1,18 +1,21 @@
 import kotlin.random.Random
 
 fun main() {
+    var Andrii = Person()
+  Andrii.generateRandomBooks(8)
+   println(Andrii.borrowedBooks)
+    Andrii.printLibrary()
+println("${Andrii.canBorrow()} ----------------------------")
 
-var spices = listOf(
-    Spice("Cayenne", "spicy"),
-    Spice("Paprika", "mild"),
-    Spice("Cumin", "medium"),
-    Spice("Black Pepper", "spicy"),
-    Spice("Ginger", "mild"),
-    Spice("Ginger2", "not spice")
-)
-spices[0].makeSalt()
-    for (i in spices)
-    {
-        i.print()
-    }
+    Andrii.generateRandomBooks(2)
+    println(Andrii.borrowedBooks)
+    Andrii.printLibrary()
+
+    println("${Andrii.canBorrow()} ----------------------------")
+
+
+    Andrii.generateRandomBooks(2)
+    println(Andrii.borrowedBooks)
+    Andrii.printLibrary()
+    println("${Andrii.canBorrow()} ----------------------------")
 }
