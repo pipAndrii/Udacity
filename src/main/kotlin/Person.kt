@@ -1,15 +1,15 @@
+import jdk.jfr.DataAmount
 import kotlin.random.Random
 
 const val maxBooks = 10
-class Person {
+open class Person {
 
-    var ownLibrary:MutableList<Book>
-    var borrowedBooks:Int
+    var ownLibrary: MutableList<Book>
+    var borrowedBooks: Int
 
-    init {
-        var b = Book()
-        ownLibrary = mutableListOf(b)
-        borrowedBooks = 0
+    constructor(ownLibrary: MutableList<Book> = mutableListOf(Book()), borrowedBooks: Int = 0) {
+        this.ownLibrary = ownLibrary
+        this.borrowedBooks = borrowedBooks
     }
 
     fun canBorrow():Boolean
@@ -38,7 +38,8 @@ class Person {
             val book = Book().apply {
                 title = randomTitle
                 author = randomAuthor
-                currentPage = randomPage
+                pages = randomPage
+                currentPage = randomPage - Random.nextInt(0,pages)
             }
             ownLibrary.add(book)
 
@@ -51,8 +52,26 @@ class Person {
     {
         for(i in ownLibrary)
         {
+
             i.printBook()
             i.printUrl()
+            println("${i.weight()} - weight")
+
+            i.tornPages(Random.nextInt(0,100))
+            println("TORN PAGES ___ ${i.pages}")
         }
+    }
+
+    fun Book.weight():Double
+    {
+        return pages * 1.5
+    }
+    fun Book.tornPages(torn: Int) {
+        if (pages >= torn) {
+            pages -= torn
+        } else {
+            pages = 0
+        }
+
     }
 }

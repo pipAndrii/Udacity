@@ -1,17 +1,21 @@
 
 open class Book {
 
+    var title: String
+    var author: String
+    var currentPage: Int
+    var pages: Int
+
+    constructor(title: String = "", author: String = "", currentPage: Int = 0, pages: Int = 0) {
+        this.title = title
+        this.author = author
+        this.currentPage = currentPage
+        this.pages = pages
+    }
+
     companion object {
         const val baseUrl: String = "https://library.com/catalog/"
 
-    }
-    var title: String
-    var author:String
-    var currentPage:Int
-    init {
-        title = "none"
-        author = "none"
-        currentPage = 0
     }
  open   fun ReadPage()
     {
@@ -28,6 +32,6 @@ open class Book {
     }
     fun printBook()
     {
-        println("$title + $author + $currentPage")
+        println("$title + $author + $pages pages")
     }
 }
